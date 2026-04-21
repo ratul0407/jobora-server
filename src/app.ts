@@ -3,6 +3,8 @@ import cors from "cors";
 import config from "./app/config/index";
 import cookieParser from "cookie-parser";
 import router from "./app/routers";
+import globalErrorHandler from "./app/middlewares/globalErrorHandler";
+import notFound from "./app/middlewares/notFouond";
 const app: Application = express();
 
 app.use(
@@ -23,4 +25,6 @@ app.get("/", (req: Request, res: Response) => {
     timeStamp: new Date().toISOString(),
   });
 });
+app.use(globalErrorHandler);
+app.use(notFound);
 export default app;

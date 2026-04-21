@@ -1,9 +1,41 @@
 model User {
-    id String @id @default(uuid())
-    email String @unique 
-    password String 
-    name String 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    @@map("users")
+  id            String   @id @default(uuid())
+  first_name    String
+  last_name     String?
+  email         String   @unique
+  password      String
+  profile_photo String?
+  headline      String?
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  @@map("user")
+}
+
+model UserProfile {
+  id               String          @id @default(uuid())
+  user_id          String
+  banner           String?
+  bio              String?
+  address          String?
+  personal_website String?
+  company_website  String?
+  contact_number   String?
+  current_company  String?
+  company          WorkExperience? @relation(fields: [current_company], references: [id])
+  created_at       DateTime        @default(now())
+  updated_at       DateTime        @updatedAt
+
+  @@map("user_profile")
+}
+
+model WorkExperience {
+  id           String        @id @default(uuid())
+  user_id      String
+  company      String?
+  role         String?
+  start_date   DateTime
+  end_date     DateTime?
+  description  String?
+  created_at   DateTime      @default(now())
+  userProfiles UserProfile[]
 }
