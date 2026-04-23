@@ -8,6 +8,7 @@ model User {
   headline      String?
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
+
   @@map("user")
 }
 
@@ -21,6 +22,8 @@ model UserProfile {
   company_website  String?
   contact_number   String?
   current_company  String?
+  resume           String?
+  language         Language?
   company          WorkExperience? @relation(fields: [current_company], references: [id])
   created_at       DateTime        @default(now())
   updated_at       DateTime        @updatedAt

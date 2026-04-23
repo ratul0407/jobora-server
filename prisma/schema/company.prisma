@@ -1,1 +1,49 @@
+model Company {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String
+  logo        String
+  banner      String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  jobs        Job[]
 
+  @@map("company")
+}
+
+model Job {
+  id                 String             @id @default(uuid())
+  title              String
+  description        Json
+  company_id         String
+  Company            Company            @relation(fields: [company_id], references: [id])
+  work_type          WorkType
+  remote             Boolean
+  location           String
+  salary_upper_limit Int
+  salary_lower_limit Int
+  created_at         DateTime           @default(now())
+  updated_at         DateTime           @updatedAt
+  jobQualifications  JobQualification[]
+  jobQuestions       JobQuestions[]
+  @@map("job")
+}
+
+model JobQualification {
+  id            String  @id @default(uuid())
+  job_id        String
+  Job           Job     @relation(fields: [job_id], references: [id])
+  qualification String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@map("job_qualification")
+}
+
+model JobQuestions {
+  id     String @id @default(uuid())
+  job_id String
+  Job    Job    @relation(fields: [job_id], references: [id])
+  question String 
+  answer String 
+  @@map("job_questions")
+}
