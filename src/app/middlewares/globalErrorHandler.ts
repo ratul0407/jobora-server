@@ -4,7 +4,7 @@ import httpStatus from "http-status";
 import config from "../config";
 import { ZodError } from "zod";
 import { handleZodError } from "../helper/handleZodError";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../generated/prisma";
 
 const globalErrorHandler = async (
   err: any,

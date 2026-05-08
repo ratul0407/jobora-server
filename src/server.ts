@@ -1,6 +1,7 @@
 import { Server } from "http";
 import config from "./app/config/index";
 import app from "./app";
+import "./app/workers/sendEmail.worker";
 export function bootstrap() {
   let server: Server;
   try {

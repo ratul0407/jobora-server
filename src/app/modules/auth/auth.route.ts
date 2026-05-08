@@ -11,6 +11,11 @@ router.post(
   AuthController.createUser,
 );
 router.post(
+  "/verify",
+  validateRequest(AuthValidation.verifyOtp),
+  AuthController.verifyOtp,
+);
+router.post(
   "/login",
   validateRequest(AuthValidation.loginUser),
   AuthController.loginUser,

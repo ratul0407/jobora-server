@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Verify Your Email — OTP</title>
+  <style type="text/css">
+    /* Load fonts for clients that support them */
+    @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap");
+
+    /* Reset styles for consistency */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    table { border-collapse: collapse !important; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; background-color: #f5f5f0; }
+
+    /* Web-safe fallbacks included in font-family */
+    .font-serif { font-family: 'DM Serif Display', Georgia, serif; }
+    .font-mono { font-family: 'DM Mono', 'Courier New', monospace; }
+    .font-sans { font-family: 'DM Sans', Arial, sans-serif; }
+  </style>
+</head>
+<body style="background-color: #f5f5f0; padding: 40px 16px;">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td align="center">
+        <table border="0" cellpadding="0" cellspacing="0" width="560" style="max-width: 560px;">
+          
+          <tr>
+            <td style="padding-bottom: 28px; border-bottom: 1px solid #1a1a1a;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td align="left" class="font-serif" style="font-size: 20px; color: #1a1a1a; letter-spacing: -0.02em;">
+                    JOBORA
+                  </td>
+                  <td align="right">
+                    <span class="font-mono" style="font-size: 10px; border: 1px solid #1a1a1a; padding: 5px 10px; text-transform: uppercase; letter-spacing: 0.18em;">
+                      Email Verification
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr><td height="48"></td></tr>
+
+          <tr>
+            <td bgcolor="#ffffff" style="border: 1px solid #1a1a1a; padding: 52px 48px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td class="font-mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; padding-bottom: 16px;">
+                    One-Time Password
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-serif" style="font-size: 36px; line-height: 1.1; color: #1a1a1a; padding-bottom: 20px;">
+                    Verify your<br /><i style="font-style: italic;">identity.</i>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-sans" style="font-size: 14px; font-weight: 300; line-height: 1.75; color: #555; padding-bottom: 44px;">
+                    Hello, <strong><%=name%></strong>. Use the code below to complete your verification. This code is single-use and cannot be shared.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td align="center" style="padding-bottom: 44px;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td align="center" class="font-mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; padding-bottom: 14px;">
+                          Your 6-digit code
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center">
+                          <table border="0" cellpadding="0" cellspacing="0" align="center">
+                            <tr>
+                              <% const digits = String(otp).split(''); %>
+                              <% digits.forEach((digit, index) => { %>
+                                <% if (index === 3) { %>
+                                  <td width="16" align="center">
+                                    <div style="width: 8px; height: 1px; background: #1a1a1a;"></div>
+                                  </td>
+                                <% } %>
+                                <td width="52" height="64" align="center" bgcolor="#ffffff" style="border: 1px solid #1a1a1a; font-family: 'DM Mono', Courier, monospace; font-size: 28px; font-weight: 500; color: #1a1a1a;">
+                                  <%= digit %>
+                                </td>
+                                <% if (index !== 5 && index !== 2) { %>
+                                  <td width="8"></td>
+                                <% } %>
+                              <% }) %>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding-bottom: 44px;">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="6" height="6" bgcolor="#1a1a1a" style="border-radius: 50%;"></td>
+                        <td width="10"></td>
+                        <td class="font-mono" style="font-size: 11px; color: #888;">
+                          This code expires in <strong style="color: #1a1a1a;">10 minutes</strong> — generated at <strong style="color: #1a1a1a;">14:32 UTC, 08 May 2026</strong>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <tr><td height="1" bgcolor="#e8e8e8" style="font-size: 1px; line-height: 1px;">&nbsp;</td></tr>
+                <tr><td height="32"></td></tr>
+
+                <tr>
+                  <td bgcolor="#f9f9f7" style="border-left: 2px solid #1a1a1a; padding: 12px 18px;">
+                    <p class="font-sans" style="margin: 0; font-size: 12px; font-weight: 300; color: #666; line-height: 1.7;">
+                      <strong style="color: #1a1a1a;">Didn't request this?</strong> If you did not initiate this verification, please ignore this email. Your account remains secure. Do not share this code with anyone — Acme will never ask for it.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding-top: 32px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-top: 1px solid #1a1a1a; padding-top: 28px;">
+                <tr>
+                  <td align="left" valign="top" class="font-sans" style="font-size: 11px; color: #888; line-height: 1.8;">
+                    © 2026 Jobora Inc. · Narayanganj, Dhaka, BD<br />
+                    <a href="#" style="color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a;">Unsubscribe</a> · 
+                    <a href="#" style="color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a;">Privacy Policy</a> · 
+                    <a href="#" style="color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a;">Help</a>
+                  </td>
+                  <td align="right" valign="top" class="font-mono" style="font-size: 10px; color: #bbb; letter-spacing: 0.1em; line-height: 1.8;">
+                    jobora.vercel.app
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table></td>
+    </tr>
+  </table>
+</body>
+</html>

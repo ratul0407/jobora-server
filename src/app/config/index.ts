@@ -16,4 +16,17 @@ export default {
     access_expires_in: process.env.JWT_ACCESS_EXPIRES_IN as string,
     refresh_expires_in: process.env.JWT_REFRESH_EXPIRES_IN as string,
   },
+  smtp: {
+    host: process.env.SMTP_HOST as string,
+    port: Number(process.env.SMTP_PORT) as number,
+    user: process.env.SMTP_USER as string,
+    pass: process.env.SMTP_PASS as string,
+    from: process.env.SMTP_FROM as string,
+  },
+  redis: {
+    host: process.env.REDIS_HOST as string,
+    port: Number(process.env.REDIS_PORT) as number,
+    pass: process.env.REDIS_PASS as string,
+    username: process.env.REDIS_USERNAME as string,
+  },
 };

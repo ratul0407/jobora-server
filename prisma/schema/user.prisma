@@ -6,6 +6,7 @@ model User {
   password      String
   profile_photo String?
   headline      String?
+  isVerified    Boolean  @default(false)
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
 

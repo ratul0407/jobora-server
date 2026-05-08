@@ -5,6 +5,7 @@ import sendResponse from "../../utils/sendResponse";
 import httpStatus from "http-status";
 const createUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
+    console.log(req.body);
     const result = await AuthService.createUser(req.body);
     sendResponse(res, {
       statusCode: httpStatus.CREATED,
@@ -29,7 +30,19 @@ const loginUser = catchAsync(
     });
   },
 );
+const verifyOtp = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const result = await AuthService.verifyOtp(req.body.email, req.body.otp);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "OTP verified successfully!",
+      data: result,
+    });
+  },
+);
 export const AuthController = {
   createUser,
   loginUser,
+  verifyOtp,
 };
