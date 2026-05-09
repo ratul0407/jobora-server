@@ -49,13 +49,7 @@ const loginUser = async (email: string, password: string) => {
     throw new ApiError(httpStatus.UNAUTHORIZED, "Invalid Credentials");
   return user;
 };
-const getUser = async (id: string) => {
-  const user = await prisma.user.findUnique({
-    where: { id },
-  });
-  if (!id) throw new ApiError(httpStatus.NOT_FOUND, "User Not Found");
-  return user;
-};
+
 const verifyOtp = async (email: string, otp: string) => {
   const user = await prisma.user.findUnique({
     where: {
@@ -75,20 +69,18 @@ const verifyOtp = async (email: string, otp: string) => {
   }
   if (String(savedOtp) === String(otp)) {
     await redisClient.del(redisKey);
-    await prisma.user.update({
+    return await prisma.user.update({
       where: {
         email,
       },
       data: {
-        isVerified: true,
+        is_verified: true,
       },
     });
-    return user;
   }
 };
 export const AuthService = {
   createUser,
   loginUser,
-  getUser,
   verifyOtp,
 };

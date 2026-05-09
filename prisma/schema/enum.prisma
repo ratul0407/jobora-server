@@ -18,3 +18,11 @@ enum WorkType {
   CONTRACT
   INTERN
 }
+
+enum RoleType {
+  SUPER_ADMIN
+  ADMIN
+  EMPLOYEE
+  EMPLOYER
+  CLIENT
+}
